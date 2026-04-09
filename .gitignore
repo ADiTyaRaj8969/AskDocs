@@ -1,0 +1,26 @@
+# Python (legacy backend)
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/*.pyc
+backend/.env
+backend/uploads/
+backend/chroma_db/
+
+# Node - frontend
+frontend/node_modules/
+frontend/dist/
+
+# Node - server
+server/node_modules/
+server/.env
+server/uploads/
+server/vector_db/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
