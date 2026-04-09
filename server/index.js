@@ -19,13 +19,13 @@ const app = express()
 const PORT = process.env.PORT || 5000
 
 // ── Middleware ──────────────────────────────────────────────────────────────
-const allowedOrigins = (process.env.ALLOWED_ORIGINS || 'http://localhost:5173,http://localhost:3000')
-  .split(',').map((o) => o.trim())
-
 app.use(cors({
   origin: (origin, cb) => {
-    // Allow requests with no origin (mobile apps, curl, Postman, same-origin)
-    if (!origin || allowedOrigins.includes(origin)) return cb(null, true)
+    // Allow: no origin (curl/Postman), any localhost port (dev), or configured origins
+    if (!origin) return cb(null, true)
+    if (/^http:\/\/localhost(:\d+)?$/.test(origin)) return cb(null, true)
+    const allowedOrigins = (process.env.ALLOWED_ORIGINS || '').split(',').map(o => o.trim()).filter(Boolean)
+    if (allowedOrigins.includes(origin)) return cb(null, true)
     cb(new Error(`CORS policy: origin ${origin} not allowed`))
   },
   credentials: true,
