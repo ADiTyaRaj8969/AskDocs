@@ -9,7 +9,10 @@ import { getEmbeddingsBatch } from '../services/embedder.js'
 import { storeChunks, deleteDocumentChunks } from '../services/vectorStore.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const UPLOAD_DIR = path.join(__dirname, '..', 'uploads')
+// In production (Render) use /app/server/data/uploads, otherwise local uploads folder
+const UPLOAD_DIR = process.env.DATA_DIR
+  ? path.join(process.env.DATA_DIR, 'uploads')
+  : path.join(__dirname, '..', 'uploads')
 fs.mkdirSync(UPLOAD_DIR, { recursive: true })
 
 const SUPPORTED = new Set(['.pdf', '.docx', '.xlsx', '.xls', '.png', '.jpg', '.jpeg'])
