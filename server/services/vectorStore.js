@@ -9,7 +9,9 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const DB_PATH = path.join(__dirname, '..', 'vector_db', 'store.json')
+// In production (Render) use /app/server/data, otherwise local vector_db folder
+const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, '..', 'vector_db')
+const DB_PATH = path.join(DATA_DIR, 'store.json')
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
 
