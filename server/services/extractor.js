@@ -58,7 +58,7 @@ async function extractPDF(filePath, documentName) {
 async function extractPDFWithVision(filePath, documentName) {
   // Use Gemini Vision to OCR the PDF as a whole file
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
-  const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
+  const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
 
   const fileBuffer = fs.readFileSync(filePath)
   const base64 = fileBuffer.toString('base64')
