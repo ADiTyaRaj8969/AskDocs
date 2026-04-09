@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai'
 
-const LLM_MODEL = 'gemini-1.5-flash'
+const LLM_MODEL = 'gemini-2.5-flash'
 
 /**
  * Generate a grounded answer using retrieved context chunks.
