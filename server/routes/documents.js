@@ -5,7 +5,9 @@ import { fileURLToPath } from 'url'
 import { listDocuments, deleteDocumentChunks, getDocumentStats } from '../services/vectorStore.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const UPLOAD_DIR = path.join(__dirname, '..', 'uploads')
+const UPLOAD_DIR = process.env.DATA_DIR
+  ? path.join(process.env.DATA_DIR, 'uploads')
+  : path.join(__dirname, '..', 'uploads')
 
 const router = express.Router()
 
