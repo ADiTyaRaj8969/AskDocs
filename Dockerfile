@@ -21,8 +21,8 @@ COPY server/ ./server/
 # Copy built frontend into place (server serves it as static files)
 COPY --from=frontend-build /app/frontend/dist ./frontend/dist
 
-# Create required runtime directories
-RUN mkdir -p server/uploads server/vector_db
+# Create local fallback runtime directories (overridden by Render disk mount)
+RUN mkdir -p server/uploads server/vector_db server/data/uploads
 
 # Expose port
 EXPOSE 5000
