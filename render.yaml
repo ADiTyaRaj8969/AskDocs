@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: askdocs
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false          # You will paste the value in Render dashboard
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+    disk:
+      name: askdocs-data
+      mountPath: /app/server/uploads
+      sizeGB: 1

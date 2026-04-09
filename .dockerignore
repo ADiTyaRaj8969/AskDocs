@@ -1,0 +1,11 @@
+node_modules
+*/node_modules
+frontend/dist
+server/uploads
+server/vector_db
+**/.env
+*.log
+backend
+docs
+generate_srs.py
+setup.bat
